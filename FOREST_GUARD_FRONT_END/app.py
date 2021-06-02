@@ -6,6 +6,21 @@ from dotenv import load_dotenv
 import os
 import pandas as pd
 
+CSS = """
+h1 {
+    color: green;
+}
+h2{ color : white}
+p { color : white}
+label { color : white}
+.stApp {
+    +label { color : white}
+    background-image: url(https://as1.ftcdn.net/jpg/00/44/84/68/500_F_44846834_q8DqmWHbHvodkWvYjZvZzA1esHPsBUBr.jpg);
+    background-size: cover;
+}
+"""
+st.write(f'<style>{CSS}</style>', unsafe_allow_html=True)
+
 # Forest selection
 dotenv_path = os.path.join(os.path.dirname(__file__), ".env")
 
@@ -19,15 +34,16 @@ ee.Initialize(credentials)
 st.sidebar.title('FOREST GUARDS 🌳')
 
 # Forest selection
-df_zone = pd.DataFrame({'first column': ['Select a forest', 'Vosges', 'Black Forest']})
+df_zone = pd.DataFrame({'first column': ['Select a forest', 'Vosges', 'Black Forest', 'Australia']})
 option_zone = st.sidebar.selectbox('Select a forest', df_zone['first column'])
 zones = {
         'Black Forest' : [49, 7.5],
-        'Vosges' : [48.454874373107636, 6.882905907505892]
+        'Vosges' : [48.454874373107636, 6.882905907505892],
+        'Australia' : [-33.127433806604245, 150.64521457538288]
         }
 
 # Year selection
-option_year_1 = st.sidebar.slider('Select a year', 2018, 2020)
+option_year_1 = st.sidebar.slider('Select a year', 2017, 2020)
 
 
 OPTICAL_BANDS = ['B1', 'B2', 'B3', 'B4', 'B5', 'B6', 'B7']
@@ -85,8 +101,11 @@ image19 = l8sr.filterDate(
     '2019-01-01', '2019-12-31').map(maskL8sr).median().select(BANDS).float()
 image18 = l8sr.filterDate(
     '2018-01-01', '2018-12-31').map(maskL8sr).median().select(BANDS).float()
+image17 = l8sr.filterDate(
+    '2017-01-01', '2017-12-31').map(maskL8sr).median().select(BANDS).float()
 
 years = {
+        2017 : image17,
         2018 : image18,
         2019 : image19,
         2020 : image20
