@@ -27,6 +27,11 @@ six>=1.14
 joblib
 memoized-property
 termcolor
+folium
+streamlit_folium
+ee
 
 # front
 streamlit
+python-dotenv
+python-dotenv
