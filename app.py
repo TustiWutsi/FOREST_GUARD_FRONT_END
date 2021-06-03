@@ -69,12 +69,18 @@ ee.Initialize(credentials)
 st.sidebar.title('FOREST GUARDS 🌳')
 
 # Forest selection
-df_zone = pd.DataFrame({'first column': ['Select a forest', 'Vosges', 'Black Forest', 'Australia']})
+df_zone = pd.DataFrame({'first column': ['Select a forest', 'France - Vosges', 'Germany - Black Forest', 'Australia - Kangaroo Valley', 'Brazil - Amazonian forest', 'Bolivia - Roboré', 'Russia - Siberia', 'Canada - British Colombia', 'Democratic Republic of the Congo', 'Chile - Constitucion']})
 option_zone = st.sidebar.selectbox('Select a forest', df_zone['first column'])
 zones = {
-        'Black Forest' : [49, 7.5],
-        'Vosges' : [48.454874373107636, 6.882905907505892],
-        'Australia' : [-33.127433806604245, 150.64521457538288]
+        'Germany - Black Forest' : [49, 7.5],
+        'France - Vosges' : [48.454874373107636, 6.882905907505892],
+        'Australia - Kangaroo Valley' : [-34.72727, 150.48513],
+        'Brazil - Amazonian forest' : [2.71728, -60.83778],
+        'Bolivia - Roboré' : [-18.37860, -59.87502],
+        'Russia - Siberia' : [64.88169, 117.41006],
+        'Canada - British Colombia' : [54.10413, -124.91342],
+        'Democratic Republic of the Congo' : [1.39822, 29.22992],
+        'Chile - Constitucion' : [-35.36992, -72.32187]
         }
 
 # Year selection
