@@ -6,16 +6,52 @@ from dotenv import load_dotenv
 import os
 import pandas as pd
 
+st.set_page_config(
+            page_title="Forest Guards", # => Quick reference - Streamlit
+            page_icon="🌳",
+            layout="centered", # wide
+            initial_sidebar_state="auto") # collapsed
+
+
+st.markdown(
+    """
+<style>
+.reportview-container .markdown-text-container {
+    font-family: monospace;
+}
+.sidebar .sidebar-content {
+    background-image: linear-gradient(#d8f3dc,#d8f3dc);
+    color: #d8f3dc;
+}
+.Widget>label {
+    color: #d8f3dc;
+    font-family: monospace;
+}
+[class^="st-b"]  {
+    color: green;
+    font-family: monospace;
+}
+footer {
+    font-family: monospace;
+}
+.reportview-container .main footer, .reportview-container .main footer a {
+    color: black;
+}
+header .decoration {
+    background-image: none;
+}
+
+</style>
+""",
+    unsafe_allow_html=True,
+)
+
 CSS = """
 h1 {
     color: green;
 }
-h2{ color : white}
-p { color : white}
-label { color : white}
-.stApp {
-    +label { color : white}
-    background-image: url(https://as1.ftcdn.net/jpg/00/44/84/68/500_F_44846834_q8DqmWHbHvodkWvYjZvZzA1esHPsBUBr.jpg);
+body {
+    background-color: #d8f3dc;
     background-size: cover;
 }
 """
@@ -26,8 +62,6 @@ dotenv_path = os.path.join(os.path.dirname(__file__), ".env")
 
 load_dotenv(dotenv_path)
 key_data = os.getenv('EARTH_KEY_DATA')
-
-print(key_data)
 
 service_account = 'earth-engine@wagon-bootcamp-data.iam.gserviceaccount.com'
 credentials = ee.ServiceAccountCredentials(service_account, key_data=key_data)
@@ -56,7 +90,7 @@ FEATURES = BANDS + [RESPONSE]
 
 MODEL_NAME = 'JP_test_model_adam_binarycrossentropy'
 PROJECT = 'wagon-bootcamp-data'
-REGION = 'europe-west1'
+REGION = 'us-central1'
 
 MODEL_NAME_SMALL = 'JP_test_model_adam_binarycrossentropy'
 VERSION_SMALL = "v1622563893"
@@ -120,7 +154,7 @@ model = ee.Model.fromAiPlatformPredictor(
     modelName = MODEL_NAME,
     # modelName = "ai_platform_ee_output_format_tf2",
     #version = VERSION_NAME,
-    version = "v1622563893",
+    version = "v1622718569",
     region= REGION,
     inputTileSize = [144, 144],
     inputOverlapSize = [8, 8],
