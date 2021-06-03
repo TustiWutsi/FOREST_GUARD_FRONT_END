@@ -27,6 +27,8 @@ dotenv_path = os.path.join(os.path.dirname(__file__), ".env")
 load_dotenv(dotenv_path)
 key_data = os.getenv('EARTH_KEY_DATA')
 
+print(key_data)
+
 service_account = 'earth-engine@wagon-bootcamp-data.iam.gserviceaccount.com'
 credentials = ee.ServiceAccountCredentials(service_account, key_data=key_data)
 ee.Initialize(credentials)
