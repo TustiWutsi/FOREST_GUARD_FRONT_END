@@ -57,7 +57,6 @@ body {
 """
 st.write(f'<style>{CSS}</style>', unsafe_allow_html=True)
 
-# Forest selection
 dotenv_path = os.path.join(os.path.dirname(__file__), ".env")
 
 load_dotenv(dotenv_path)
