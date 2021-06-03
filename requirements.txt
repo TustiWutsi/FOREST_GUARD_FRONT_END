@@ -29,7 +29,7 @@ memoized-property
 termcolor
 folium
 streamlit_folium
-ee
+earthengine-api
 
 # front
 streamlit
